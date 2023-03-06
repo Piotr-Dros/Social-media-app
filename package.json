@@ -1,0 +1,48 @@
+{
+  "name": "socialapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "clean": "rimraf dist/",
+    "clean:public": "rimraf dist/public/",
+    "clean:views": "rimraf dist/views/",
+    "tsc": "tsc",
+    "scss:build": "sass src/styles:src/public/css --no-source-map",
+    "scss:watch": "sass src/styles:src/public/css --watch --no-source-map",
+    "copy-assets": "ts-node tools/copyAssets",
+    "clean-and-copy": "npm-run-all clean:public clean:views copy-assets",
+    "tsc:watch": "nodemon --watch src --ignore src/public src/bin/www.ts",
+    "test": "jest",
+    "build": "npm-run-all tsc copy-assets",
+    "dev:start": "npm-run-all --parallel tsc:watch scss:watch",
+    "start": "node dist/bin/www"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "helmet": "^6.0.1",
+    "mysql2": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/express": "^4.17.17",
+    "@types/jest": "^29.4.0",
+    "@types/node": "^18.14.6",
+    "@types/shelljs": "^0.8.11",
+    "jest": "^29.4.3",
+    "nodemon": "^2.0.21",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^4.3.0",
+    "sass": "^1.58.3",
+    "shelljs": "^0.8.5",
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  }
+}

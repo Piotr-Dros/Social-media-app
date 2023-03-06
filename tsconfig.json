@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "ES2022",
+    "moduleResolution": "nodenext",
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "target": "es2022",
+    "noImplicitAny": true
+  },
+  "include": ["src/**/*", "tests/**/*", "tests"],
+  "exclude": ["node_modules", "src/styles/**/*", "src/public"],
+  "ts-node": { "esm": true, "experimentalSpecifierResolution": "node" }
+}

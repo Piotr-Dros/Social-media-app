@@ -1,0 +1,15 @@
+$text-scale-ratio: 1.2;
+
+$text-xs: calc(1em / ($text-scale-ratio * $text-scale-ratio));
+$text-s: calc(1em / $text-scale-ratio);
+$text-m: calc(1em * $text-scale-ratio);
+$text-l: calc(1em * $text-scale-ratio * $text-scale-ratio);
+$text-xl: calc(1em * $text-scale-ratio * $text-scale-ratio * $text-scale-ratio);
+$text-xxl: calc(
+    1em * $text-scale-ratio * $text-scale-ratio * $text-scale-ratio *
+        $text-scale-ratio
+);
+$text-xxxl: calc(
+    1em * $text-scale-ratio * $text-scale-ratio * $text-scale-ratio *
+        $text-scale-ratio * $text-scale-ratio
+);
