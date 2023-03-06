@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int    @id @default(autoincrement())
+  email     String @unique
+  password  String
+  firstName String
+  lastName  String
+  role      Role   @default(USER)
+
+  profile   Profile?
+  posts     Post[]
+  Comment   Comment[]
+  followers Follower[] @relation("followers")
+  following Follower[] @relation("followed")
+}
+
+model Profile {
+  id      Int     @id @default(autoincrement())
+  age     Int
+  city    String?
+  country String?
+  bio     String?
+  userId  Int     @unique
+  user    User    @relation(fields: [userId], references: [id])
+}
+
+model Post {
+  id        Int       @id @default(autoincrement())
+  title     String
+  content   String    @db.Text
+  published Boolean   @default(true)
+  likes     Int       @default(0)
+  createdAt DateTime  @default(now())
+  authorId  Int
+  author    User      @relation(fields: [authorId], references: [id])
+  Comment   Comment[]
+}
+
+model Comment {
+  id       Int    @id @default(autoincrement())
+  content  String @db.VarChar(255)
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId Int
+  post     Post   @relation(fields: [postId], references: [id])
+  postId   Int
+}
+
+model Follower {
+  follower   User @relation("followers", fields: [followerId], references: [id])
+  followed   User @relation("followed", fields: [followedId], references: [id])
+  followerId Int
+  followedId Int
+
+  @@id([followerId, followedId])
+}
+
+enum Role {
+  ADMIN
+  USER
+  MODERATOR
+}
