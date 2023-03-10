@@ -1,10 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import {
-  body,
-  Result,
-  ValidationError,
-  validationResult,
-} from 'express-validator';
+import { body, validationResult } from 'express-validator';
 
 import prisma from '../configs/db.config.js';
 

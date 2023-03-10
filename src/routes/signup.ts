@@ -1,5 +1,5 @@
 import express, { Router } from 'express';
-import controls from '../controllers/signup.controller.js';
+import controls from '../controllers/auth.controller.js';
 import {
   signupValidationRules,
   validate,
@@ -9,5 +9,6 @@ const router: Router = express.Router();
 
 router.get('/', controls.renderPage);
 router.post('/', signupValidationRules, validate, controls.signup);
+router.get('/verify/:id/:token');
 
 export default router;
