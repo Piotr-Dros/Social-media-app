@@ -13,10 +13,9 @@
     "scss:watch": "sass src/styles:src/public/css --watch --no-source-map",
     "copy-assets": "ts-node tools/copyAssets",
     "clean-and-copy": "npm-run-all clean:public clean:views copy-assets",
-    "tsc:watch": "nodemon --watch src --ignore src/public src/bin/www.ts",
+    "dev:start": "nodemon --watch src --ext js,ts,json src/bin/www.ts",
     "test": "jest",
     "build": "npm-run-all tsc copy-assets",
-    "dev:start": "npm-run-all --parallel tsc:watch scss:watch",
     "start": "node dist/bin/www"
   },
   "author": "",
@@ -27,6 +26,7 @@
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
+    "express-validator": "^6.15.0",
     "helmet": "^6.0.1",
     "mysql2": "^3.2.0"
   },

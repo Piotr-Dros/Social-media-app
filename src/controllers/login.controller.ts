@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 
 function renderPage(req: Request, res: Response) {
-    res.render('login');
+  res.sendStatus(200);
 }
 
 export default {
-    renderPage,
+  renderPage,
 };
